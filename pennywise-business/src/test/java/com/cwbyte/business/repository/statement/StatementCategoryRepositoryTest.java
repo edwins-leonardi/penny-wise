@@ -1,4 +1,4 @@
-package com.cwbyte.business.statement.repository;
+package com.cwbyte.business.repository.statement;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.After;
@@ -6,7 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.cwbyte.business.common.repository.TestBaseRepository;
+import com.cwbyte.business.repository.common.TestBaseRepository;
+import com.cwbyte.business.repository.statement.StatementCategoryRepository;
 import com.cwbyte.model.statement.StatementCategory;
 
 public class StatementCategoryRepositoryTest extends TestBaseRepository {

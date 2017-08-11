@@ -1,4 +1,4 @@
-package com.cwbyte.business.common.repository;
+package com.cwbyte.business.repository.common;
 
 import javax.persistence.EntityManager;
 

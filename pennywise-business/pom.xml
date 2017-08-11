@@ -15,7 +15,6 @@
 		<dependency>
 			<groupId>com.cwbyte</groupId>
 			<artifactId>pennywise-model</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hsqldb</groupId>

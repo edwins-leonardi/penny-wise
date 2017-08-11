@@ -1,4 +1,4 @@
-package com.cwbyte.business.common.repository;
+package com.cwbyte.business.repository.common;
 
 import java.util.List;
 
@@ -15,7 +15,8 @@ public abstract class GenericRepository<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> findAll() {
 		return getEntityManager().createQuery(
-				"Select e From " + getPersistentClass().getSimpleName() + " e Order by e." + getDefaultOrderByField())
+				"Select e From " + getPersistentClass().getCanonicalName() + " e Order by e."
+						+ getDefaultOrderByField())
 				.getResultList();
 	}
 
@@ -35,4 +36,7 @@ public abstract class GenericRepository<T> {
 		getEntityManager().merge(entity);
 	}
 
+	public void delete(final Long id) {
+		getEntityManager().remove(id);
+	}
 }
