@@ -15,7 +15,7 @@ public abstract class GenericRepository<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> findAll() {
 		return getEntityManager().createQuery(
-				"Select e From " + getPersistentClass().getCanonicalName() + " e Order by e."
+				"Select e From " + getPersistentClass().getSimpleName() + " e Order by e."
 						+ getDefaultOrderByField())
 				.getResultList();
 	}
@@ -37,6 +37,7 @@ public abstract class GenericRepository<T> {
 	}
 
 	public void delete(final Long id) {
-		getEntityManager().remove(id);
+		final T entity = findById(id);
+		getEntityManager().remove(entity);
 	}
 }

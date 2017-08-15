@@ -13,7 +13,7 @@ public class TestBaseRepository {
 	protected DBCommandTransactionalExecutor dbCommandExecutor;
 
 	protected void initializeTestDB() {
-		emf = Persistence.createEntityManagerFactory("libraryPU");
+		emf = Persistence.createEntityManagerFactory("pennywisePU");
 		em = emf.createEntityManager();
 
 		dbCommandExecutor = new DBCommandTransactionalExecutor(em);

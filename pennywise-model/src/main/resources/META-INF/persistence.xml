@@ -3,11 +3,15 @@
 	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
-	<persistence-unit name="libraryPU" transaction-type="JTA">
+	<persistence-unit name="pennywisePU" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jboss/datasources/pennywise</jta-data-source>
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
 		<properties>
 			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.default_schema" value="public" />
+			<property name="hibernate.hbm2ddl.auto" value="none" />
+			<property name="hibernate.cache.use_second_level_cache"	value="true" />			
 		</properties>
 	</persistence-unit>
 
