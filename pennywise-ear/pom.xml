@@ -26,11 +26,21 @@
 			<groupId>com.cwbyte</groupId>
 			<artifactId>pennywise-resource</artifactId>
 			<type>pom</type>
-		</dependency>		
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<configuration>
+					<usedDependencies combine.children="append">
+						<usedDependency>com.cwbyte:pennywise-business</usedDependency>
+						<usedDependency>com.cwbyte:pennywise-resource</usedDependency>
+					</usedDependencies>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-ear-plugin</artifactId>

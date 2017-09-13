@@ -10,7 +10,7 @@ import com.cwbyte.model.statement.StatementCategory;
 @Stateless
 public class StatementCategoryRepository extends GenericRepository<StatementCategory> {
 
-	@PersistenceContext(unitName = "pennywisePU")
+	@PersistenceContext
 	EntityManager em;
 
 	@Override
