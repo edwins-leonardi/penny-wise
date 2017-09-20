@@ -1,4 +1,4 @@
-package com.cwbyte.business.statement.service;
+package com.cwbyte.business.service.statement;
 
 import java.util.Arrays;
 import java.util.List;
