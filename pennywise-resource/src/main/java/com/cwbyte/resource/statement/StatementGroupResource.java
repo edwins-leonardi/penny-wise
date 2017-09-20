@@ -1,4 +1,4 @@
-package com.cwbyte.resource;
+package com.cwbyte.resource.statement;
 
 import java.util.List;
 
@@ -14,25 +14,25 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.cwbyte.business.service.statement.StatementCategoryService;
-import com.cwbyte.model.statement.StatementCategory;
+import com.cwbyte.business.service.statement.StatementGroupService;
+import com.cwbyte.model.statement.StatementGroup;
 import com.cwbyte.resource.commom.HttpCode;
 
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/categories")
-public class StatementCategoryResource {
+@Path("/statementgroups")
+public class StatementGroupResource {
 
 	@Inject
-	private StatementCategoryService service;
+	private StatementGroupService service;
 
 	@GET
-	public List<StatementCategory> findAll() {
+	public List<StatementGroup> findAll() {
 		return service.findAll();
 	}
 
 	@POST
-	public Response save(StatementCategory category) {
+	public Response save(StatementGroup category) {
 		try {
 			category = service.add(category);
 			return Response.status(HttpCode.CREATED.getCode()).entity(category).build();
@@ -42,8 +42,9 @@ public class StatementCategoryResource {
 	}
 
 	@PUT
-	public Response update(final StatementCategory category) {
-		service.update(category);
+	public Response update(final StatementGroup group) {
+		System.out.println("update");
+		service.update(group);
 		return Response.ok().build();
 	}
 
@@ -56,7 +57,7 @@ public class StatementCategoryResource {
 
 	@GET
 	@Path("{id}")
-	public StatementCategory findById(@PathParam("id") final Long id) {
+	public StatementGroup findById(@PathParam("id") final Long id) {
 		return service.findById(id);
 	}
 }
