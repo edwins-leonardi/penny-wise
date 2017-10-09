@@ -14,9 +14,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.cwbyte.business.repository.common.exception.RecordNotFoundException;
 import com.cwbyte.business.service.finance.CostCenterService;
 import com.cwbyte.model.finance.CostCenter;
-import com.cwbyte.resource.commom.HttpCode;
+import com.cwbyte.resource.common.HttpCode;
 
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -41,7 +42,7 @@ public class CostCenterResource {
 	}
 
 	@PUT
-	public Response update(final CostCenter costCenter) {
+	public Response update(final CostCenter costCenter) throws RecordNotFoundException {
 		service.update(costCenter);
 		return Response.ok().build();
 	}

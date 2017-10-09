@@ -14,9 +14,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.cwbyte.business.repository.common.exception.RecordNotFoundException;
 import com.cwbyte.business.service.statement.StatementCategoryService;
 import com.cwbyte.model.statement.StatementCategory;
-import com.cwbyte.resource.commom.HttpCode;
+import com.cwbyte.resource.common.HttpCode;
 
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -42,7 +43,7 @@ public class StatementCategoryResource {
 	}
 
 	@PUT
-	public Response update(final StatementCategory category) {
+	public Response update(final StatementCategory category) throws RecordNotFoundException {
 		service.update(category);
 		return Response.ok().build();
 	}

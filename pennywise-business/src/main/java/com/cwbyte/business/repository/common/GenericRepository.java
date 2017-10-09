@@ -15,8 +15,7 @@ public abstract class GenericRepository<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> findAll() {
 		return getEntityManager().createQuery(
-				"Select e From " + getPersistentClass().getSimpleName() + " e Order by e."
-						+ getDefaultOrderByField())
+				"Select e From " + getPersistentClass().getSimpleName() + " e Order by e." + getDefaultOrderByField())
 				.getResultList();
 	}
 
@@ -30,6 +29,12 @@ public abstract class GenericRepository<T> {
 			return null;
 		}
 		return getEntityManager().find(getPersistentClass(), id);
+	}
+
+	public boolean existsById(final Long id) {
+		return getEntityManager()
+				.createQuery("Select 1 From " + getPersistentClass().getSimpleName() + " e where e.id = :id")
+				.setParameter("id", id).setMaxResults(1).getResultList().size() > 0;
 	}
 
 	public void update(final T entity) {

@@ -1,4 +1,4 @@
-package com.cwbyte.resource.commom;
+package com.cwbyte.resource.common;
 
 public enum HttpCode {
 	CREATED(201),

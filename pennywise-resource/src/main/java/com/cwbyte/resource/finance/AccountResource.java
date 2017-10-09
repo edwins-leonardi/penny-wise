@@ -1,4 +1,4 @@
-package com.cwbyte.resource.statement;
+package com.cwbyte.resource.finance;
 
 import java.util.List;
 
@@ -15,37 +15,35 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.cwbyte.business.repository.common.exception.RecordNotFoundException;
-import com.cwbyte.business.service.statement.StatementGroupService;
-import com.cwbyte.model.statement.StatementGroup;
+import com.cwbyte.business.service.finance.AccountService;
+import com.cwbyte.model.finance.Account;
 import com.cwbyte.resource.common.HttpCode;
 
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/statementgroups")
-public class StatementGroupResource {
-
+@Path("/accounts")
+public class AccountResource {
 	@Inject
-	private StatementGroupService service;
+	private AccountService service;
 
 	@GET
-	public List<StatementGroup> findAll() {
+	public List<Account> findAll() {
 		return service.findAll();
 	}
 
 	@POST
-	public Response save(StatementGroup category) {
+	public Response save(Account account) {
 		try {
-			category = service.add(category);
-			return Response.status(HttpCode.CREATED.getCode()).entity(category).build();
+			account = service.add(account);
+			return Response.status(HttpCode.CREATED.getCode()).entity(account).build();
 		} catch (final Exception e) {
 			return Response.status(HttpCode.VALIDATION_ERROR.getCode()).build();
 		}
 	}
 
 	@PUT
-	public Response update(final StatementGroup group) throws RecordNotFoundException {
-		System.out.println("update");
-		service.update(group);
+	public Response update(final Account account) throws RecordNotFoundException {
+		service.update(account);
 		return Response.ok().build();
 	}
 
@@ -58,7 +56,8 @@ public class StatementGroupResource {
 
 	@GET
 	@Path("{id}")
-	public StatementGroup findById(@PathParam("id") final Long id) {
+	public Account findById(@PathParam("id") final Long id) {
 		return service.findById(id);
 	}
+
 }
